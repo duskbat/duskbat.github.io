@@ -10,3 +10,4 @@ title: tttt
 ## <center>title 1</center>
 - test markdown  
 - test  
+- [浅析](/docs/m1){:target="_blank"}
