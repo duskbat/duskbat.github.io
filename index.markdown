@@ -2,12 +2,10 @@
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: default
-title: 目录
+title: muweiye's blog
 
 ---
  
-# <center>title 0</center>
-## <center>title 1</center>
-- test markdown  
-- test  
-- [浅析](/docs/m1){:target="_blank"}
+# <center>目录</center>
+## <center>MySQL</center>
+- [浅析MySQL之: 锁](/docs/m1){:target="_blank"}
