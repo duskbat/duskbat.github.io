@@ -36,12 +36,12 @@ SHOW ENGINE INNODB MUTEX;
   - 意向共享锁(IS Lock): 事务想要获得一张表中某几行的共享锁
   - 意向排他锁(IX Lock): 事务想要获得一张表中某几行的排他锁
 
-**意向锁**
+**意向锁**  
 InnoDB支持多粒度(granular)锁定, 允许事务在行级和表级上的锁同时存在。  
 为了支持在不同粒度上进行加锁操作, InnoDB使用了意向锁(Intention Lock): 如果想要对最细粒度的对象(例如行)上锁, 那么需要先对数据库、表、页上意向锁, 然后才能对行上锁。
 InnoDB中的意向锁是表级锁。
 
-**InnoDB中锁不兼容情况**
+**InnoDB中锁不兼容情况**  
 因为行级锁的存在, 所以意向锁不会阻塞除全表扫描意外的任何请求。
 > 意向锁之间是互相兼容的。
 > IX和S不兼容, 有X的全都不兼容。
@@ -64,15 +64,15 @@ SHOW ENGINE INNODB STATUS\G;
 - INNODB_LOCK_WAITS
 
 ## 一致性读
-**一致性非锁定读**
-在read committed和repeatable read隔离级别下，一致性非锁定读是InnoDB默认的读取方式，其实现方式是MVCC。
-这种读取方式通过读取undo的快照数据，避免了加锁操作，同样也不需要等待锁的释放。
+**一致性非锁定读**  
+在read committed和repeatable read隔离级别下，一致性非锁定读是InnoDB默认的读取方式，其实现方式是MVCC。  
+这种读取方式通过读取undo的快照数据，避免了加锁操作，同样也不需要等待锁的释放。  
 在 read committed 和 repeatable read 隔离级别下，都是使用一致性非锁定读，但是对于版本的定义是不同的。
 - read committed: 读取被锁定行的最新版本 (其实是违反了 I 隔离性)
 - repeatable read：读取事务开始时的版本
 
-**一致性锁定读**
-除了非锁定读外，可以显式地对数据库读取操作进行加锁。
+**一致性锁定读**  
+除了非锁定读外，可以显式地对数据库读取操作进行加锁。  
 InnoDB对SELECT语句支持两种一致性锁定读操作：
 - SELECT ... FOR UPDATE
     > 加Ｘ锁
@@ -91,18 +91,18 @@ InnoDB有三种行锁的算法
 Next-Key Locking是为了解决幻影行的问题。这里注意，在repeatable read隔离级别下非锁定读也解决了幻行的问题。因为MVCC中SELECT会查找行版本号早于当前事务版本号的数据行，INSERT会赋予新插入的行以当前事务版本号作为行版本号。
 > 举例来讲，事务A开始，版本号A；然后事务B开始，版本号B，事务B插入数据行，版本号为B，这一行对A是不可见的。
 
-除了next-key还有previous-key，Next-Key是前开后闭区间，previous-key是前闭后开区间。当执行INSERT操作的时候会检测下一个索引有没有锁定，如果锁定则阻塞。
+除了next-key还有previous-key，Next-Key是前开后闭区间，previous-key是前闭后开区间。当执行INSERT操作的时候会检测下一个索引有没有锁定，如果锁定则阻塞。  
 当有唯一索引的时候，next-key Lock会降级为Record Lock。
 
-幻行指的是同一事物中，连续两次查询会返回不同的结果。
+幻行指的是同一事物中，连续两次查询会返回不同的结果。  
 关于幻行，根据上述的意思应该可以得出，行指的是索引列相同的行记录。
 
 Gap Lock可以通过两种方式显式关闭：
 - read committed 隔离级别
 - 参数 innodb_locks_unsafe_for_binlog 设为 1
 
-这样除了唯一性检查之外(还有外键)就没有其他的Gap Lock了。
-关闭Gap Lock会破坏事务的隔离性，并且可能会导致主从数据不一致。此外，性能上也没有优势。
-可以利用 Next-key Lock 可以进行唯一性检查。
+这样除了唯一性检查之外(还有外键)就没有其他的Gap Lock了。  
+关闭Gap Lock会破坏事务的隔离性，并且可能会导致主从数据不一致。此外，性能上也没有优势。  
+可以利用 Next-key Lock 可以进行唯一性检查。  
 > 有读者可能会有疑问，SELECT ... LOCK IN SHARE MODE 会加S锁，这时候并发操作，insert的时候会不会有问题？
 > 其实不会的，只有一个insert能成功，其他的都会抛出死锁的错误。
