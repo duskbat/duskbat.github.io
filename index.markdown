@@ -8,4 +8,4 @@ title: muweiye's blog
  
 # <center>目录</center>
 ## <center>MySQL</center>
-- [浅析MySQL之: 锁](/docs/m1){:target="_blank"}
+- [浅析MySQL之: 锁](/docs/mysql-lock){:target="_blank"}
