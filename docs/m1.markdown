@@ -46,8 +46,9 @@ InnoDB中的意向锁是表级锁。
 > 意向锁之间是互相兼容的。
 > IX和S不兼容, 有X的全都不兼容。
 
-|     | IS  | IX  | S   | X   |
+|     |     |     |     |     |
 | --- | --- | --- | --- | --- |
+|     | IS  | IX  | S   | X   |
 | IS  |     |     |     | N   |
 | IX  |     |     | N   | N   |
 | S   |     | N   |     | N   |
@@ -56,7 +57,7 @@ InnoDB中的意向锁是表级锁。
 
 可以通过命令查看当前有关锁的信息: 
 ```sql
-SHOW ENGINE INNODB STATUS\G;
+SHOW ENGINE INNODB STATUS \G;
 ```
 从InnoDB 1.0之后，通过 INFORMATION SCHEMA 中的三张表可以更好地监控当前事务, 并分析可能存在的锁问题:
 - INNODB_TRX
