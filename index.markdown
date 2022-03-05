@@ -9,3 +9,13 @@ title: muweiye's homepage
 # <center>目录</center>
 ## <center>MySQL</center>
 - [浅析MySQL之: 锁](/docs/mysql-lock){:target="_blank"}
+
+# <center>unchecked</center>
+## <center>Java</center>
+- [Java](/docs/Java/java){:target="_blank"}
+## <center>MySQL</center>
+- [MySQL](/docs/MySQL/mysql){:target="_blank"}
+## <center>Redis</center>
+- [Redis](/docs/Redis/redis){:target="_blank"}
+## <center>Spring</center>
+- [Spring](/docs/Spring/spring){:target="_blank"}
