@@ -15,6 +15,9 @@ title: muweiye's homepage
 
 ## <center>Java</center>
 - [Java](/docs/Java/java){:target="_blank"}
+- [JVM](/docs/Java/JVM){:target="_blank"}
+- [多线程](/docs/Java/多线程){:target="_blank"}
+
 
 ## <center>MySQL</center>
 - [MySQL](/docs/MySQL/mysql){:target="_blank"}
