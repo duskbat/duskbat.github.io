@@ -155,10 +155,10 @@
     如果小于或者HandlePromotionFailure=false，则改为进行一次Full GC。
 
 ```mermaid
-graph TB
-判断1{{老年代最大可用连续空间>新生代所有对象总空间}}
-判断2{{HandlePromotionFailure}}
-判断3{{老年代最大可用连续空间>平均晋升大小}}
+flowchart TD
+判断1([老年代最大可用连续空间>新生代所有对象总空间])
+判断2([HandlePromotionFailure])
+判断3([老年代最大可用连续空间>平均晋升大小])
 开始-->判断1
 判断1--是-->YGC
 判断1--否-->判断2
