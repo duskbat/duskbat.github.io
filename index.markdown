@@ -8,8 +8,10 @@ title: muweiye's homepage
  
 # <center>目录</center>
 
-## <center>MySQL</center>
+- 此项目废弃, mkdocs 很棒, 看看这个:
+  <https://github.com/duskbat/cs-cloud>
 
-- 此项目废弃, mkdocs 很棒, 看看这个 <https://github.com/duskbat/cs-cloud>
+
+## <center>MySQL</center>
 
 - [浅析MySQL之: 锁](/docs/mysql-lock){:target="_blank"}
