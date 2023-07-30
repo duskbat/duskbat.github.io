@@ -9,6 +9,7 @@ title: muweiye's homepage
 # <center>目录</center>
 
 ## <center>MySQL</center>
-- [浅析MySQL之: 锁](/docs/mysql-lock){:target="_blank"}
 
-- [动态数据源事务失效问题排查](/docs/dynamic-datasource){:target="_blank"}
+- 此项目废弃, mkdocs 很棒, 看看这个 <https://github.com/duskbat/cs-cloud>
+
+- [浅析MySQL之: 锁](/docs/mysql-lock){:target="_blank"}
